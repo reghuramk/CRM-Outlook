@@ -1,8 +1,10 @@
 import React from "react";
+import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/index.css";
 import App from "./App.jsx";
+import AuthResponse from "./routes/auth-response";
 import { PublicClientApplication } from "@azure/msal-browser";
 import { MsalProvider } from "@azure/msal-react";
 import { msalConfig } from "./authConfig";
@@ -19,7 +21,12 @@ const msalInstance = new PublicClientApplication(msalConfig);
 ReactDOM.render(
     <React.StrictMode>
         <MsalProvider instance={msalInstance}>
-            <App />
+         <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<App />} />
+                <Route path="auth-response" element={<AuthResponse />} />
+            </Routes>  
+         </BrowserRouter>
         </MsalProvider>
     </React.StrictMode>,
     document.getElementById("root")

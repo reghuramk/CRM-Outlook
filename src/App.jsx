@@ -24,6 +24,8 @@ const ProfileContent = () => {
         });
     }
 
+    console.log('graphdata', graphData)
+
     return (
         <>
             <h5 className="card-title">Welcome {accounts[0].name}</h5>
